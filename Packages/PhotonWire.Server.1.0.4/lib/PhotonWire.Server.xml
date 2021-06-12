@@ -1,0 +1,371 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PhotonWire.Server</name>
+    </assembly>
+    <members>
+        <member name="T:PhotonWire.Server.Collections.RoomBase`2">
+            <summary>
+            Base class for RoomCollection.
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.Collections.RoomBase`2.MembersKeyEqualityComparer">
+            <summary>
+            Dictionary of Members Key's equality comparer.
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.Collections.RoomBase`2.MembersValueEqualityComparer">
+            <summary>
+            Dictionary of Members Value's equality comparer.
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.Collections.RoomBase`2.Members">
+            <summary>
+            Members are immutable, modified only in RoomCollection.
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.Collections.RoomBase`2.MemberPeers">
+            <summary>
+            Peers of room member.
+            </summary>
+        </member>
+        <member name="T:PhotonWire.Server.Collections.RoomMemberBase">
+            <summary>
+            Bass class for RoomCollection's member.
+            </summary>
+        </member>
+        <member name="T:PhotonWire.Server.Collections.RoomCollection`4">
+            <summary>
+            Threadsafe coordinater, room and members.
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.Collections.RoomCollection`4.CreateRoom(`0,`1,`2,`3)">
+            <summary>
+            Create new room with member.
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.Collections.RoomCollection`4.RemoveRoom(`0,`1@)">
+            <summary>
+            Remove room. If can removed return true otherwise else.
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.Collections.RoomCollection`4.GetRoom(`0)">
+            <summary>
+            Get room. If not found return null.
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.Collections.RoomCollection`4.GetAllRoom">
+            <summary>
+            Get all rooms.
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.Collections.RoomCollection`4.JoinRoom(`0,`2,`3,System.Nullable{System.Int32},System.Action{`1,`3},`1@)">
+            <summary>
+            Join new room. If JoinRoomReason.Joined* is succeeed otherwise failed.
+            </summary>
+            <param name="sideEffectBeforeJoin">Thread safety side effects in the lock for set playerNo etc. Action is in the lock so should be lightweight.</param>
+        </member>
+        <member name="M:PhotonWire.Server.Collections.RoomCollection`4.RemoveMember(`0,`2,System.Action{System.Collections.Immutable.IImmutableDictionary{`2,`3}},`1@)">
+            <summary>
+            Remove member from the room. If RemoveRoomMemberReason.Removed* is succeeed otherwise failed.
+            </summary>
+            <param name="sideEffectAfterRemove">Thread safety side effects in the lock for re-set playerNo etc. Action is in the lock so should be lightweight.</param>
+        </member>
+        <member name="M:PhotonWire.Server.Collections.RoomCollection`4.ModifyRoom(`0,System.Action{`1},`1@)">
+            <summary>
+            Do side-effect action in key lock, so action should be lightweight.
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.Collections.RoomCollection`4.ReplaceMembers(`0,System.Func{`1,System.Collections.Immutable.IImmutableDictionary{`2,`3}},`1@)">
+            <summary>
+            Replace Members in key lock.
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.CustomErrorException.ReturnCode">
+            <summary>
+            Receiving returnCode. Code must not be 0 or -1.
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.CustomErrorException.ErrorMessage">
+            <summary>
+            Return message to client.
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.CustomErrorException.Parameter">
+            <summary>
+            Return parameter, only photon supported type.
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.CustomErrorException.#ctor(System.Int16)">
+            <summary>
+            Client receive CustomErrorException.
+            </summary>
+            <param name="returnCode">Receiving returnCode. Code must not be 0 or -1.</param>
+        </member>
+        <member name="M:PhotonWire.Server.CustomErrorException.#ctor(System.Int16,System.String)">
+            <summary>
+            Client receive CustomErrorException.
+            </summary>
+            <param name="returnCode">Receiving returnCode. Code must not be 0 or -1.</param>
+            <param name="errorMessage">Return message</param>
+        </member>
+        <member name="M:PhotonWire.Server.CustomErrorException.#ctor(System.Int16,System.Object)">
+            <summary>
+            Client receive CustomErrorException.
+            </summary>
+            <param name="returnCode">Receiving returnCode. Code must not be 0 or -1.</param>
+            <param name="parameter">Return parameter, only photon supported type: http://doc.photonengine.com/en/onpremise/current/reference/serialization-in-photon </param>
+        </member>
+        <member name="M:PhotonWire.Server.CustomErrorException.#ctor(System.Int16,System.String,System.Object)">
+            <summary>
+            Client receive CustomErrorException.
+            </summary>
+            <param name="returnCode">Receiving returnCode. Code must not be 0 or -1.</param>
+            <param name="errorMessage">Return message</param>
+            <param name="parameter">Return parameter, only photon supported type: http://doc.photonengine.com/en/onpremise/current/reference/serialization-in-photon </param>
+        </member>
+        <member name="M:PhotonWire.Server.DictionaryItemsExtensions.GetValueOrDefault``1(System.Collections.Generic.IDictionary{System.Object,System.Object},System.Object,``0)">
+            <summary>
+            Get from object key and cast result value.
+            </summary>
+        </member>
+        <member name="T:PhotonWire.Server.IPhotonWireHub">
+            <summary>
+            Common interface for ClientHub(Hub), ServerHub, ReceiveServerHub
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.IPhotonWireHub.Context">
+            <summary>
+            Context per operation.
+            </summary>
+        </member>
+        <member name="T:PhotonWire.Server.INoClient">
+            <summary>
+            Marker of No Client.
+            </summary>
+        </member>
+        <member name="T:PhotonWire.Server.Hub">
+            <summary>
+            Hub is operation proxy of ClientPeer.
+            </summary>
+        </member>
+        <member name="T:PhotonWire.Server.Hub`1">
+            <summary>
+            Hub is operation proxy of ClientPeer.
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.Hub`1.Clients">
+            <summary>
+            Client Proxy of peers.
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.HubClientProxy`1.Group(System.String,PhotonWire.Server.IPhotonWirePeer[])">
+            <summary>
+            Broadcast to target group(in current gameserver) except exclude peers.
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.HubClientProxy`1.Groups(System.Collections.Generic.IList{System.String},PhotonWire.Server.IPhotonWirePeer[])">
+            <summary>
+            Broadcast to target groups(in current gameserver) except exclude peers.
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.HubClientProxy`1.All">
+            <summary>
+            Broadcast to all(in current gameserver) client.
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.HubClientProxy`1.AllExcept(PhotonWire.Server.IPhotonWirePeer[])">
+            <summary>
+            Broadcast to all(in current gameserver) except exclude peers.
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.HubClientProxy`1.Target(PhotonWire.Server.IPhotonWirePeer)">
+            <summary>
+            Broadcast to target(in current gameserver) client.
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.HubClientProxy`1.Targets(System.Collections.Generic.IEnumerable{PhotonWire.Server.IPhotonWirePeer})">
+            <summary>
+            Broadcast to target(in current gameserver) clients.
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.HubCallerClientProxy`1.Caller">
+            <summary>
+            Broadcast to caller client.
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.HubCallerClientProxy`1.Others">
+            <summary>
+            Broadcast to all(in current gameserver) except caller client.
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.HubCallerClientProxy`1.OthersInGroup(System.String)">
+            <summary>
+            Broadcast to target group(in current gameserver) except the calling client.
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.HubCallerClientProxy`1.OthersInGroups(System.Collections.Generic.IList{System.String})">
+            <summary>
+            Broadcast to target groups(in current gameserver) except the calling client.
+            </summary>
+        </member>
+        <member name="T:PhotonWire.Server.IgnoreOperationAttribute">
+            <summary>
+            Indicated cless or method don't register and don't generate in PhotonWire engine.
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.IPhotonWirePeer.Items">
+            <summary>Property storage per connection.</summary>
+        </member>
+        <member name="M:PhotonWire.Server.IPhotonWirePeer.RegisterDisconnectAction(System.Action{System.Int32,System.String})">
+            <summary>
+            Action = DisconnectReason reasonCode, string reasonDetail
+            </summary>
+        </member>
+        <member name="T:PhotonWire.Server.OperationContext">
+            <summary>
+            Encapsulates all information about an individual Photon request.
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.OperationContext.Hub">
+            <summary>Info of belongs to Hub.</summary>
+        </member>
+        <member name="P:PhotonWire.Server.OperationContext.Method">
+            <summary>Info of belongs to Method.</summary>
+        </member>
+        <member name="P:PhotonWire.Server.OperationContext.Peer">
+            <summary>Peer of caller.</summary>
+        </member>
+        <member name="P:PhotonWire.Server.OperationContext.Items">
+            <summary>Property storage per operation.</summary>
+        </member>
+        <member name="P:PhotonWire.Server.OperationContext.OperationRequest">
+            <summary>PhotonPeer's raw argument of OperationRequest.</summary>
+        </member>
+        <member name="P:PhotonWire.Server.OperationContext.SendParameters">
+            <summary>PhotonPeer's raw argument of SendParameters.</summary>
+        </member>
+        <member name="P:PhotonWire.Server.OperationContext.Timestamp">
+            <summary>Initial timestamp of the current Photon request.</summary>
+        </member>
+        <member name="P:PhotonWire.Server.OperationContext.Parameters">
+            <summary>Parameter values of method.</summary>
+        </member>
+        <member name="T:PhotonWire.Server.PeerManager">
+            <summary>
+            Managing Peer and Peer Groups.
+            </summary>
+        </member>
+        <member name="T:PhotonWire.Server.PhotonWireApplicationBase">
+            <summary>
+            Application Startup for PhotonWire.
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.PhotonWireApplicationBase.IsDebugMode">
+            <summary>
+            If true,
+            1. return exception message return to client when operation failed.
+            2. broadcast JSON(dumpable) message when from PhotonWire.HubInvoker.
+            3. show Debug.Fail dialog if failed on initialization
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.PhotonWireApplicationBase.DisconnectAllPeersAfterOnRequestStopped">
+            <summary>
+            If use graceful-restart(EnableShadowCopy/EnableAutoRestart), AppDomain keep alived.
+            This timestpan force disconnect for start to TearDown.
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.PhotonWireClientPeer.Items">
+            <summary>Property storage per connection.</summary>
+        </member>
+        <member name="F:PhotonWire.Server.ReservedParameterNo.ResponseId">
+            <summary>Key for Byte[] Response Result</summary>
+        </member>
+        <member name="F:PhotonWire.Server.ReservedParameterNo.RequestHubId">
+            <summary>Key for short Request HubId</summary>
+        </member>
+        <member name="F:PhotonWire.Server.ReservedParameterNo.MessageId">
+            <summary>Key for Int MessageId</summary>
+        </member>
+        <member name="M:PhotonWire.Server.ServerToServer.ReceiveServerHub.GetClientsProxy``2">
+            <summary>
+            Get Client Proxy of peers.
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.ServerToServer.ReceiveServerHub.GetClientsProxy``2(Photon.SocketServer.SendParameters)">
+            <summary>
+            Get Client Proxy of peers.
+            </summary>
+        </member>
+        <member name="T:PhotonWire.Server.ServerToServer.ReceiveServerHub`2">
+            <summary>
+            Generics Helper for use ClientPeers(set default pair of Hub and Client type proxy)
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.ServerToServer.ReceiveServerHub`2.Clients">
+            <summary>
+            Client Proxy of peers.
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.ServerToServer.ServerHubClientProxy`1.Group(System.String,PhotonWire.Server.IPhotonWirePeer[])">
+            <summary>
+            Broadcast to target group(in current gameserver) except exclude peers.
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.ServerToServer.ServerHubClientProxy`1.Groups(System.Collections.Generic.IEnumerable{System.String},PhotonWire.Server.IPhotonWirePeer[])">
+            <summary>
+            Broadcast to target groups(in current gameserver) except exclude peers.
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.ServerToServer.ServerHubClientProxy`1.All">
+            <summary>
+            Broadcast to all(in current gameserver) client.
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.ServerToServer.ServerHubClientProxy`1.AllExcept(PhotonWire.Server.IPhotonWirePeer[])">
+            <summary>
+            Broadcast to all(in current gameserver) except exclude peers.
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.ServerToServer.ServerHubClientProxy`1.Single">
+            <summary>
+            Broadcast to single(in current gameserver) client, target peer is All.First().
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.ServerToServer.ServerHubClientProxy`1.RandomOne">
+            <summary>
+            Broadcast to single(in current gameserver) client, target peer is All[Random()].
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.ServerToServer.ServerHubClientProxy`1.Target(PhotonWire.Server.IPhotonWirePeer)">
+            <summary>
+            Broadcast to target(in current gameserver) client.
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.ServerToServer.ServerHubClientProxy`1.Targets(System.Collections.Generic.IEnumerable{PhotonWire.Server.IPhotonWirePeer})">
+            <summary>
+            Broadcast to target(in current gameserver) clients.
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.ServerToServer.ServerHubCallerClientProxy`1.Caller">
+            <summary>
+            Broadcast to caller client.
+            </summary>
+        </member>
+        <member name="P:PhotonWire.Server.ServerToServer.ServerHubCallerClientProxy`1.Others">
+            <summary>
+            Broadcast to all(in current gameserver) except caller client.
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.ServerToServer.ServerHubCallerClientProxy`1.OthersInGroup(System.String)">
+            <summary>
+            Broadcast to target group(in current gameserver) except the calling client.
+            </summary>
+        </member>
+        <member name="M:PhotonWire.Server.ServerToServer.ServerHubCallerClientProxy`1.OthersInGroups(System.Collections.Generic.IList{System.String})">
+            <summary>
+            Broadcast to target groups(in current gameserver) except the calling client.
+            </summary>
+        </member>
+    </members>
+</doc>

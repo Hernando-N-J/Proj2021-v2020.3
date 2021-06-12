@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PhotonWire.Client</name>
+    </assembly>
+    <members>
+        <member name="F:PhotonWire.Client.ReservedParameterNo.ResponseId">
+            <summary>Key for Byte[] Response Result</summary>
+        </member>
+        <member name="F:PhotonWire.Client.ReservedParameterNo.RequestHubId">
+            <summary>Key for short Request HubId</summary>
+        </member>
+        <member name="F:PhotonWire.Client.ReservedParameterNo.MessageId">
+            <summary>Key for Int MessageId</summary>
+        </member>
+    </members>
+</doc>
